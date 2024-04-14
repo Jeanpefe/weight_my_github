@@ -5,6 +5,7 @@ import { getRepoInfo } from "./logic/getRepoInfo"
 function App() {
   const [size, getSize] = useState(3)
   const handleClick = () => {
+    console.log("entramos")
     getRepoInfo()
   }
   return (
