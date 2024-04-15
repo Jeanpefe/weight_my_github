@@ -1,12 +1,11 @@
 import { useState } from "react"
 import GithubSize from "./components/GithusSize"
-import { getRepoInfo } from "./logic/getRepoInfo"
+import useGetRepoInfoAndSetState from "./hooks/useGetRepoInfoAndSetState"
 
 function App() {
-  const [size, getSize] = useState(3)
+  const size = 3
   const handleClick = () => {
-    console.log("entramos")
-    getRepoInfo()
+    useGetRepoInfoAndSetState()
   }
   return (
     <main className="mainInfo">
