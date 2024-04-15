@@ -1,9 +1,10 @@
 import { useState } from "react"
 import GithubSize from "./components/GithusSize"
-import useGetRepoInfoAndSetState from "./hooks/useGetRepoInfoAndSetState"
+import useRepoInfo from "./hooks/useRepoInfo"
 
 function App() {
-  const size = 3
+  const {size, useGetRepoInfoAndSetState} = useRepoInfo()
+  
   const handleClick = () => {
     useGetRepoInfoAndSetState()
   }
