@@ -17,8 +17,11 @@ export default function useRepoInfo() {
     const useGetRepoInfoAndSetState = async () => {
         const newSize = await fetchData()
         if (newSize !== null) {
-            setSize(newSize[0].size)
-            console.log(newSize[0].size)
+            let sizeKb = 0
+            newSize.forEach(elem => {
+                sizeKb += elem.size
+            })
+            setSize(sizeKb)
         }
     }
 
