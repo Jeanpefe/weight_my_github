@@ -1,11 +1,13 @@
 import GithubSize from "./components/GithusSize"
 import useRepoInfo from "./hooks/useRepoInfo"
+import { useEffect } from "react"
 
 function App() {
-  const {size, useGetRepoInfoAndSetState} = useRepoInfo()
-  
+  console.log("renderizamos componente")
+  const {size, getRepoInfoAndSetState} = useRepoInfo()
+
   const handleClick = () => {
-    useGetRepoInfoAndSetState()
+    getRepoInfoAndSetState()
   }
   return (
     <main className="mainInfo">

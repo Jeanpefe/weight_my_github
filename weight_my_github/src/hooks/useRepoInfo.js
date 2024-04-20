@@ -1,9 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
-const ENDPOINT_URL = 'https://api.github.com/users/Jeanpefe/repos'
+const ENDPOINT_URL = 'https://api.github.com/users/wifodev/repos'
 
 export default function useRepoInfo() {
-
+    console.log("entramos al useRepoInfo")
     const [size, setSize] = useState(null)
     const fetchData = async () => {
         const repoPromise = await fetch(ENDPOINT_URL)
@@ -14,7 +14,7 @@ export default function useRepoInfo() {
         }
     } 
         
-    const useGetRepoInfoAndSetState = async () => {
+    const getRepoInfoAndSetState = async () => {
         const newSize = await fetchData()
         if (newSize !== null) 
         {
@@ -25,7 +25,11 @@ export default function useRepoInfo() {
             setSize(sizeKb)
         }
     }
-    // useEffect(useGetRepoInfoAndSetState(), [])
+    // useEffect(() => {
+    //     useGetRepoInfoAndSetState();
+    //   }, []);
 
-    return {size, useGetRepoInfoAndSetState}
+      useEffect(() => getRepoInfoAndSetState, []);    
+
+    return {size, getRepoInfoAndSetState}
 }
