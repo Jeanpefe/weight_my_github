@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 const ENDPOINT_URL = 'https://api.github.com/users/Jeanpefe/repos'
 

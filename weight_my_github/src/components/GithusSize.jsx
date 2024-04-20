@@ -4,7 +4,12 @@ export default function GithubSize({size}) {
     const {sizeReescalated, units} = formatSize({size})
     console.log(size)
     return (
-        <h3>Your Github size is: <strong>             {
-            }</strong></h3>
+        <h3>Your Github size is: 
+            <strong>
+                {
+                    size ? ` ${sizeReescalated} ${units}` : ""
+                }
+            </strong>
+        </h3>
     )
 }

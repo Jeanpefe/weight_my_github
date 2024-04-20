@@ -1,4 +1,3 @@
-import { useState } from "react"
 import GithubSize from "./components/GithusSize"
 import useRepoInfo from "./hooks/useRepoInfo"
 
