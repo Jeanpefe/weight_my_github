@@ -7,7 +7,7 @@ export default function GithubSize({size}) {
         <h3>Your Github size is: 
             <strong>
                 {
-                    size ? ` ${sizeReescalated} ${units}` : ""
+                    size ? ` ${sizeReescalated.toFixed(3)} ${units}` : ""
                 }
             </strong>
         </h3>

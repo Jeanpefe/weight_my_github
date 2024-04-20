@@ -3,3 +3,9 @@
   flex-flow: column;
   align-items: center;
 } 
+
+.username-form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
