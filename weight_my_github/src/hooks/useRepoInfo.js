@@ -25,11 +25,6 @@ export default function useRepoInfo() {
             setSize(sizeKb)
         }
     }
-    // useEffect(() => {
-    //     useGetRepoInfoAndSetState();
-    //   }, []);
-
-      useEffect(() => getRepoInfoAndSetState, []);    
 
     return {size, getRepoInfoAndSetState}
 }

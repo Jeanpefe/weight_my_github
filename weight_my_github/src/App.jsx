@@ -3,8 +3,11 @@ import useRepoInfo from "./hooks/useRepoInfo"
 import { useEffect } from "react"
 
 function App() {
-  console.log("renderizamos componente")
   const {size, getRepoInfoAndSetState} = useRepoInfo()
+
+  useEffect(() => {
+    getRepoInfoAndSetState()
+  }, []);    
 
   const handleClick = () => {
     getRepoInfoAndSetState()
@@ -17,5 +20,6 @@ function App() {
     </main>
   )
 }
+
 
 export default App
