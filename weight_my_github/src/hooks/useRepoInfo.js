@@ -4,6 +4,7 @@ const ENDPOINT_URL = 'https://api.github.com/users/wifodev/repos'
 
 export default function useRepoInfo() {
     const [size, setSize] = useState(null)
+    const [userName, setUserName] = useState(null)
     const [error, setError] = useState(null)
 
     const fetchData = async ({userName}) => {
@@ -18,6 +19,7 @@ export default function useRepoInfo() {
     }
         
     const getRepoInfoAndSetState = async ({userName}) => {
+        setUserName(userName)
         const newSize = await fetchData({userName})
         if (newSize !== null) 
         {
@@ -29,5 +31,5 @@ export default function useRepoInfo() {
         }
     }
 
-    return {size, error, getRepoInfoAndSetState}
+    return {size, userName, error, getRepoInfoAndSetState}
 }

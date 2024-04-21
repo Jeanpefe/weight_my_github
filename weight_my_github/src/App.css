@@ -2,10 +2,44 @@
   display: flex;
   flex-flow: column;
   align-items: center;
+  gap: 1rem
 } 
 
-.username-form {
+h1 {
+  margin-bottom: 0.5rem;
+}
+
+.userName-form {
   display: flex;
   flex-direction: row;
   gap: 1rem;
+}
+
+span {
+  font-size: 1.2rem;
+}
+
+.input-wrapper {
+  display: flex; 
+  /* position: relative; */
+  align-items: center;
+}
+
+input {
+  height: 2.4rem;
+  padding-left: 0.5rem;
+}
+
+.placeholder {
+  position: absolute;
+  color: white;
+  padding: 0 4px;
+  transition: all 0.05s ease-in;
+}
+
+input:focus + .placeholder {
+  
+  transform: translatey(-2rem);
+  font-size: 14px;
+  color: var(--focus-color);
 }
