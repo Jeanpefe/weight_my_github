@@ -1,7 +1,7 @@
 # About the project: Weight my github (Puede cambiar)
 
 Open source website to get the size of all the combined public github repos. 
-Almost based on this api request: `https://api.github.com/users/Jeanpefe/repos`
+Almost entirely based on this api request: `https://api.github.com/users/Jeanpefe/repos`
 # Roadmap
 - [ x ] Retrieve info from `github.com/Jeanpefe`
 - [ x ] Get github public repo list

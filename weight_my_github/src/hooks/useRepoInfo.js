@@ -9,6 +9,7 @@ export default function useRepoInfo() {
     const fetchData = async ({userName}) => {
         const repoPromise = await fetch(`https://api.github.com/users/${userName}/repos`)
         if (repoPromise.ok) {
+            setError(null)
             console.log("entramos")
             return await repoPromise.json()
         } else {
