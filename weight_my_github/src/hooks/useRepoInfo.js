@@ -4,12 +4,15 @@ const ENDPOINT_URL = 'https://api.github.com/users/wifodev/repos'
 
 export default function useRepoInfo() {
     const [size, setSize] = useState(null)
+    const [error, setError] = useState(null)
+
     const fetchData = async ({userName}) => {
         const repoPromise = await fetch(`https://api.github.com/users/${userName}/repos`)
         if (repoPromise.ok) {
+            console.log("entramos")
             return await repoPromise.json()
         } else {
-            console.log("Ya veremos...")
+            setError("El usuario indicado no existe")
         }
     }
         
@@ -25,5 +28,5 @@ export default function useRepoInfo() {
         }
     }
 
-    return {size, getRepoInfoAndSetState}
+    return {size, error, getRepoInfoAndSetState}
 }
