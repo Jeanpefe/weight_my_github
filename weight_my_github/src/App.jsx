@@ -2,6 +2,8 @@ import GithubSize from "./components/GithusSize"
 import useRepoInfo from "./hooks/useRepoInfo"
 import { useEffect, useState } from "react"
 import "./App.css"
+import { Footer } from "./components/Footer"
+
 function App() {
   const {size, userName, error, getRepoInfoAndSetState} = useRepoInfo()
 
@@ -25,7 +27,7 @@ function App() {
           <label 
             htmlFor='input' 
             className='placeholder'>
-            userName
+            Github Username
           </label>
         </div>        
         <button type="submit">Get data</button>
@@ -34,6 +36,7 @@ function App() {
         ? <span>{error}</span> 
         : <GithubSize userName={userName} size={size}/>
       }
+      <Footer />
     </main>
   )
 }

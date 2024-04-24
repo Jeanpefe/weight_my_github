@@ -61,3 +61,23 @@
     list-style: none;
     padding: 0;
   }
+
+  footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+
+  .footer-name {
+    font-size: 1rem;
+  }
+  img {
+    width: 2rem;
+    height: 2rem;
+  }
