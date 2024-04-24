@@ -1,6 +1,6 @@
 import GithubSize from "./components/GithusSize"
 import useRepoInfo from "./hooks/useRepoInfo"
-import { useEffect, useState } from "react"
+import { useEffect} from "react"
 import "./App.css"
 import { Footer } from "./components/Footer"
 

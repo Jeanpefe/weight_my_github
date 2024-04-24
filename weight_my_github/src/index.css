@@ -28,6 +28,7 @@
 
   strong {
     font-size: 1.5rem;
+    cursor: pointer
   }
   body {
     margin: 0;
