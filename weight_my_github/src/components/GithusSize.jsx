@@ -1,10 +1,9 @@
 import { formatSize } from "../logic/formatSize"
-import { tranformUnits } from "../logic/transformUnit"
+import { transformUnits } from "../logic/transformUnit"
 
-export default function GithubSize({userName, size}) {
-    const {sizeReescalated, units} = formatSize({size})
+export default function GithubSize({userName, size, units}) {
     const handleClick = () => {
-        const {newSize, newUnits} = transformUnits(sizeReescalated, units)
+        const {newSize, newUnits} = transformUnits(size, units)
         console.log(newSize)
         console.log(newUnits)
     }
@@ -12,7 +11,7 @@ export default function GithubSize({userName, size}) {
         <span>The repo size of {userName} is: 
             <strong onClick={handleClick}>
                 {
-                    size ? ` ${sizeReescalated.toFixed(3)} ${units}` : ""
+                    size ? ` ${size.toFixed(3)} ${units}` : ""
                 }
             </strong>
         </span>

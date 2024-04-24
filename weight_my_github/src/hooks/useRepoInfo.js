@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
-
-const ENDPOINT_URL = 'https://api.github.com/users/wifodev/repos'
+import { useState } from "react"
+import { formatSize } from "../logic/formatSize"
 
 export default function useRepoInfo() {
     const [size, setSize] = useState(null)
     const [userName, setUserName] = useState(null)
     const [error, setError] = useState(null)
+    const [units, setUnits] = useState("kB")
 
     const fetchData = async ({userName}) => {
         const repoPromise = await fetch(`https://api.github.com/users/${userName}/repos`)
@@ -27,9 +27,18 @@ export default function useRepoInfo() {
             newSize.forEach(elem => {
                 sizeKb += elem.size
             })
-            setSize(sizeKb)
+            console.log(sizeKb)
+            const {sizeReescalated, newUnits} = formatSize(sizeKb)
+            console.log(sizeReescalated)
+            setSizeAndUnits(sizeReescalated, newUnits)
         }
+        
+    const setSizeAndUnits = (size, units) => {
+        setSize(size)
+        setUnits(units)        
     }
 
-    return {size, userName, error, getRepoInfoAndSetState}
+    }
+
+    return {size, units, userName, error, getRepoInfoAndSetState}
 }

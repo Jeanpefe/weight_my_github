@@ -1,18 +1,18 @@
 
 
-export function formatSize({size}) {
-    let units = 'kB'
+export function formatSize(size) {
+    let newUnits = 'kB'
     console.log(size)
     let sizeReescalated = size
     if (size > 10000) {
         sizeReescalated = size / 1024
         console.log(sizeReescalated)
-        units = 'MB'
+        newUnits = 'MB'
     }
 
     if (sizeReescalated > 10000) {
         sizeReescalated = sizeReescalated / 1024
-        units = 'GB'
+        newUnits = 'GB'
     }
-    return {sizeReescalated, units}
+    return {sizeReescalated, newUnits}
 }
