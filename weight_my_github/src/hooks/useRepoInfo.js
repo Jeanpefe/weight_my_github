@@ -29,16 +29,14 @@ export default function useRepoInfo() {
             })
             console.log(sizeKb)
             const {sizeReescalated, newUnits} = formatSize(sizeKb)
-            console.log(sizeReescalated)
             setSizeAndUnits(sizeReescalated, newUnits)
         }
-        
+
     const setSizeAndUnits = (size, units) => {
         setSize(size)
         setUnits(units)        
     }
-
     }
-
+    // TODO: Devolver en un contexto el setSizeAndUnits para no pasarlo como prop al componente de github size. Esta función se usará cuando se dé click en el tamaño para cambiar las unidades
     return {size, units, userName, error, getRepoInfoAndSetState}
 }
