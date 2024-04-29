@@ -1,30 +1,36 @@
 import { useState } from "react"
 import { formatSize } from "../logic/formatSize"
+import { transformUnits } from "../logic/transformUnit"
 
 export default function useRepoInfo() {
     const [size, setSize] = useState(null)
     const [userName, setUserName] = useState(null)
     const [error, setError] = useState(null)
     const [units, setUnits] = useState("kB")
+	const [isLoading, setIsLoading] = useState(false)
 
     const fetchData = async ({userName}) => {
+		setIsLoading(true)
         const repoPromise = await fetch(`https://api.github.com/users/${userName}/repos`)
         if (repoPromise.ok) {
             setError(null)
-            console.log("entramos")
+			setIsLoading(false)
             return await repoPromise.json()
         } else {
             setError("El usuario indicado no existe")
+			setIsLoading(false)
         }
     }
-        
-    const setSizeAndUnits = (size, units) => {
-        console.log(size)
-        console.log(units)
-        setSize(size)
-        setUnits(units)        
-    }
-    
+
+	// TODO: Poner esto en el useRepoInfo, recibiendo el transformUnits el setSize
+	const handleClickOnSize = () => {
+		console.log("ENTRA POR FAVORRRR")
+		const {newSize, newUnits} = transformUnits(size, units)
+		console.log(newSize, newUnits)
+		setSize(newSize)
+        setUnits(newUnits)   	
+	}
+
     const getRepoInfoAndSetState = async ({userName}) => {
         setUserName(userName)
         const newSize = await fetchData({userName})
@@ -34,12 +40,12 @@ export default function useRepoInfo() {
             newSize.forEach(elem => {
                 sizeKb += elem.size
             })
-            console.log(sizeKb)
             const {sizeReescalated, newUnits} = formatSize(sizeKb)
-            setSizeAndUnits(sizeReescalated, newUnits)
+			setSize(sizeReescalated)
+			setUnits(newUnits)  
         }
 
     }
     // TODO: Devolver en un contexto el setSizeAndUnits para no pasarlo como prop al componente de github size. Esta función se usará cuando se dé click en el tamaño para cambiar las unidades
-    return {size, units, userName, error, getRepoInfoAndSetState}
+    return {size, units, userName, error, isLoading, handleClickOnSize, getRepoInfoAndSetState}
 }

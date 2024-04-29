@@ -17,7 +17,7 @@ export function transformUnits(size, units) {
     } else if (units === "Bytes") {
         newSize = size * 8
         newUnits = "Bits"       
-    } 
+    }
 
     return {newSize, newUnits}
 }

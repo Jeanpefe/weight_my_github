@@ -5,9 +5,7 @@ import "./App.css"
 import { Footer } from "./components/Footer"
 
 function App() {
-  const {size, units, userName, error, getRepoInfoAndSetState} = useRepoInfo()
-  console.log(size)
-  console.log(units)
+  const {size, units, userName, error, isLoading, handleClickOnSize, getRepoInfoAndSetState} = useRepoInfo()
   useEffect(() => {
     if (error) {
       console.log("hay error, cuidadin")
@@ -32,10 +30,17 @@ function App() {
           </label>
         </div>        
         <button type="submit">Get data</button>
+
       </form>
       { error 
         ? <span>{error}</span> 
-        : <GithubSize userName={userName} size={size} units={units}/>
+        : isLoading 
+		? 
+		<div>
+			Loading...
+		</div>
+		:
+		<GithubSize userName={userName} size={size} units={units} handleClickOnSize={handleClickOnSize}/>
       }
       <Footer />
     </main>
